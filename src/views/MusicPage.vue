@@ -16,7 +16,7 @@
     <v-icon>mdi-close</v-icon>
     </v-system-bar>
     -->
-    <v-app-bar
+    <!-- <v-app-bar
       dark
       color="pink"
     >
@@ -29,7 +29,7 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-    </v-app-bar>
+    </v-app-bar> -->
 
     <v-container>
       <v-row dense>
@@ -125,6 +125,12 @@ export default {
       {
         color: "#952175",
         src: "https://cdn.vuetifyjs.com/images/cards/halcyon.png",
+        title: "Halcyon Days",
+        artist: "Ellie Goulding",
+      },
+      {
+        color: "#0098FF",
+        src: "https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2020/12/31/zYSPPEWA_o_1eqs22cqh1adiscj1mqg1hsmq7jd.jpeg",
         title: "Halcyon Days",
         artist: "Ellie Goulding",
       },

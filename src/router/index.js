@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import MusicPage from '../views/MusicPage.vue'
+import Calendar from '../views/Calendar.vue'
+import CardPage from '../views/CardPage.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +25,16 @@ const routes = [{
         path: '/music',
         name: 'Music',
         component: MusicPage
+    },
+    {
+        path: '/Calendar',
+        name: 'Calendar',
+        component: Calendar
+    },
+    {
+        path: '/CardPage',
+        name: 'CardPage',
+        component: CardPage
     }
 ]
 
