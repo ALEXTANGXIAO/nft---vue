@@ -49,7 +49,7 @@
       dark
       shift
     >
-      <v-btn @click="$router.replace({ name: '' })">
+      <v-btn @click="$router.replace({ name: 'Home' })">
         <span>Video</span>
 
         <v-icon>mdi-television-play</v-icon>

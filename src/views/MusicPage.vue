@@ -107,6 +107,40 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <v-card>
+      <v-list>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>The Walker</v-list-item-title>
+            <v-list-item-subtitle>Fitz & The Trantrums</v-list-item-subtitle>
+          </v-list-item-content>
+
+          <v-spacer></v-spacer>
+
+          <v-list-item-icon>
+            <v-btn icon>
+              <v-icon>mdi-rewind</v-icon>
+            </v-btn>
+          </v-list-item-icon>
+
+          <v-list-item-icon :class="{ 'mx-5': $vuetify.breakpoint.mdAndUp }">
+            <v-btn icon>
+              <v-icon>mdi-pause</v-icon>
+            </v-btn>
+          </v-list-item-icon>
+
+          <v-list-item-icon
+            class="ml-0"
+            :class="{ 'mr-3': $vuetify.breakpoint.mdAndUp }"
+          >
+            <v-btn icon>
+              <v-icon>mdi-fast-forward</v-icon>
+            </v-btn>
+          </v-list-item-icon>
+        </v-list-item>
+      </v-list>
+    </v-card>
   </v-card>
 </template>
 
@@ -136,5 +170,27 @@ export default {
       },
     ],
   }),
+  methods: {
+    login() {
+      if (this.user.telephone.length != 11) {
+        this.ShowTelephoneDanger = true;
+      }
+      const api = "http://localhost:5000/api/auth/login";
+      this.axios
+        .post(api, { ...this.user })
+        .then((res) => {
+          console.log(res);
+          //保存token
+          // storageService.set(storageService.USER_TOKEN,res.data.data.token)
+          localStorage.setItem("token", res.data.data.token);
+          //跳转到主页
+          this.$router.replace({ name: "Home" });
+        })
+        .catch((err) => {
+          console.log(res.data.msg);
+        });
+      console.log("login");
+    },
+  },
 };
 </script>
