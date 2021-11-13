@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import MusicPage from '../views/MusicPage.vue'
 import Calendar from '../views/Calendar.vue'
 import CardPage from '../views/CardPage.vue'
+import ShopPage from '../views/ShopPage.vue'
+import AssetPage from '../views/AssetPage.vue'
 
 Vue.use(VueRouter)
 
@@ -35,6 +37,16 @@ const routes = [{
         path: '/CardPage',
         name: 'CardPage',
         component: CardPage
+    },
+    {
+        path: '/ShopPage',
+        name: 'ShopPage',
+        component: ShopPage
+    },
+    {
+        path: '/AssetPage',
+        name: 'AssetPage',
+        component: AssetPage
     }
 ]
 
