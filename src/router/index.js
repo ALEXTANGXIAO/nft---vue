@@ -6,13 +6,14 @@ import Calendar from '../views/Calendar.vue'
 import CardPage from '../views/CardPage.vue'
 import ShopPage from '../views/ShopPage.vue'
 import AssetPage from '../views/AssetPage.vue'
+import LoginPage from '../views/LoginPage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
-        name: 'Home',
-        component: Home
+        name: 'ShopPage',
+        component: ShopPage
     },
     {
         path: '/about',
@@ -47,6 +48,11 @@ const routes = [{
         path: '/AssetPage',
         name: 'AssetPage',
         component: AssetPage
+    },
+    {
+        path: '/LoginPage',
+        name: 'LoginPage',
+        component: LoginPage
     }
 ]
 

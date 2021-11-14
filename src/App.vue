@@ -2,7 +2,7 @@
   <v-app>
     <!-- indigo 紫色
     primary 蓝色 -->
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="indigo" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -24,9 +24,6 @@
         solo-inverted
       ></v-text-field>
       <v-spacer></v-spacer>
-      <!-- <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn> -->
 
       <v-btn icon>
         <v-icon>mdi-account-circle</v-icon>
@@ -41,7 +38,7 @@
       <v-container fluid>
         <router-view></router-view>
         <!--v-navigation-drawer -->
-        <!-- <v-navigation-drawer v-model="drawer" absolute temporary right>
+        <v-navigation-drawer v-model="drawer" fixed temporary right>
           <v-list-item>
             <v-list-item-avatar>
               <v-img
@@ -64,6 +61,9 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
+          <div class="pa-2">
+            <v-btn block> Logout </v-btn>
+          </div>
 
           <template>
             <v-footer dark padless absolute>
@@ -91,7 +91,7 @@
               </v-card>
             </v-footer>
           </template>
-        </v-navigation-drawer> -->
+        </v-navigation-drawer>
       </v-container>
     </v-main>
 
@@ -108,9 +108,13 @@ export default {
   data() {
     return {
       drawer: null,
+      template :1,
       items: [
-        { title: "Home", icon: "mdi-view-dashboard" },
-        { title: "About", icon: "mdi-forum" },
+        // { title: "Home", icon: "mdi-view-dashboard" },
+        // { title: "About", icon: "mdi-forum" },
+        { title: "Dashboard", icon: "mdi-view-dashboard" },
+        { title: "Account", icon: "mdi-account-box" },
+        { title: "Admin", icon: "mdi-gavel" },
       ],
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
     };
