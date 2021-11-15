@@ -1,8 +1,15 @@
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="card in cards" :key="card.title" cols="auto">
-        <v-hover v-slot="{ hover }" open-delay="200">
+      <v-col
+        v-for="card in cards"
+        :key="card.title"
+        cols="auto"
+      >
+        <v-hover
+          v-slot="{ hover }"
+          open-delay="200"
+        >
           <v-card
             :elevation="hover ? 16 : 2"
             :class="{ 'on-hover': hover }"
@@ -31,7 +38,10 @@
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn icon @click="console.log(App.template)">
+              <v-btn
+                icon
+                @click="console.log(App.template)"
+              >
                 <v-icon>mdi-heart</v-icon>
               </v-btn>
 

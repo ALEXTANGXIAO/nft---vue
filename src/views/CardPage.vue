@@ -36,14 +36,15 @@
         <v-col
           v-for="card in cards"
           :key="card.title"
-          :cols="card.flex"
+          cols="auto"
         >
           <v-card>
             <v-img
               :src="card.src"
-              class="white--text align-end"
+              class="white--text align-end mx-auto"
               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-              height="200px"
+              max-width="300"
+              max-height="300"
             >
               <v-card-title v-text="card.title"></v-card-title>
             </v-img>
@@ -87,6 +88,18 @@ export default {
       {
         title: "Best airlines",
         src: "https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2021/01/23/ERH22cVB_o_1esmssoo79dg1b481nhrk1om11v.jpeg",
+        flex: 6,
+      },
+      ,
+      {
+        title: "Best airlines",
+        src: "https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2021/11/15/o_1fkh1mbtsjkp1tmjkktckttnap.jpeg",
+        flex: 6,
+      },
+      ,
+      {
+        title: "Best airlines",
+        src: "https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2021/11/15/o_1fkh1mbts1lso6ae6lvk9lbk9m.jpeg",
         flex: 6,
       },
     ],
