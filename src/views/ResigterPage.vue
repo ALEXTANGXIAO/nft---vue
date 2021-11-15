@@ -58,11 +58,11 @@
 
       <v-btn
         :disabled="!valid"
-        color="success"
+        color="warning"
         class="mr-4"
-        @click="login"
+        @click="resigter"
       >
-        登录
+        注册
       </v-btn>
 
       <v-btn
@@ -72,13 +72,12 @@
       >
         重置
       </v-btn>
-
       <v-btn
-        color="warning"
+        color="success"
         class="mr-4"
-        @click="$router.replace({ name: 'ResigterPage' })"
+        @click="$router.replace({ name: 'LoginPage' })"
       >
-        前往注册
+        前往登录
       </v-btn>
     </v-form>
   </v-container>
@@ -133,9 +132,25 @@ export default {
     reset() {
       this.$refs.form.reset();
     },
+    resigter() {
+      if (this.user.telephone.length != 11) {
+        console.log("error");
+      }
+      const api = "http://localhost:5000/api/auth/register";
+      this.axios
+        .post(api, { ...this.user })
+        .then((res) => {
+          console.log(res);
+          //保存token
+          this.$router.replace({ name: "LoginPage" });
+        })
+        .catch((err) => {
+          // console.log(res.data.msg);
+          console.log(err);
+        });
+      console.log("resigter");
+    },
     login() {
-      console.log(localStorage.getItem("token"));
-
       if (this.user.telephone.length != 11) {
         console.log("error");
       }
@@ -162,6 +177,6 @@ export default {
 
 <style scoped>
 .v_form {
-  min-width: 280px;
+  min-width: 380px;
 }
 </style>

@@ -2,7 +2,11 @@
   <v-app>
     <!-- indigo 紫色
     primary 蓝色 -->
-    <v-app-bar app color="indigo" dark>
+    <v-app-bar
+      app
+      color="indigo"
+      dark
+    >
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -38,12 +42,15 @@
       <v-container fluid>
         <router-view></router-view>
         <!--v-navigation-drawer -->
-        <v-navigation-drawer v-model="drawer" fixed temporary right>
+        <v-navigation-drawer
+          v-model="drawer"
+          fixed
+          temporary
+          right
+        >
           <v-list-item>
             <v-list-item-avatar>
-              <v-img
-                src="https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2021/01/23/ERH22cVB_o_1esmssoo79dg1b481nhrk1om11v.jpeg"
-              ></v-img>
+              <v-img src="https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2021/01/23/ERH22cVB_o_1esmssoo79dg1b481nhrk1om11v.jpeg"></v-img>
             </v-list-item-avatar>
             <v-list-item-content>
               <div class="font-weight-medium">John Leider</div>
@@ -51,7 +58,12 @@
           </v-list-item>
           <v-divider></v-divider>
           <v-list dense>
-            <v-list-item v-for="item in items" :key="item.title" link>
+            <v-list-item
+              v-for="item in items"
+              :key="item.title"
+              link
+              @click="$router.replace({ name: item.router })"
+            >
               <v-list-item-icon>
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-item-icon>
@@ -62,11 +74,18 @@
             </v-list-item>
           </v-list>
           <div class="pa-2">
-            <v-btn block> Logout </v-btn>
+            <v-btn
+              block
+              @click="$router.replace({ name: 'LoginPage' })"
+            > Logout </v-btn>
           </div>
 
           <template>
-            <v-footer dark padless absolute>
+            <v-footer
+              dark
+              padless
+              absolute
+            >
               <v-card
                 flat
                 tile
@@ -97,7 +116,7 @@
 
     <!--v-footer -->
     <v-footer app>
-      <!-- -->
+
     </v-footer>
   </v-app>
 </template>
@@ -105,16 +124,31 @@
 <script>
 export default {
   name: "App",
+  created() {
+    console.log("fuck u");
+    console.log(this.$vuetify.breakpoint.width);
+    if (this.$vuetify.breakpoint.width >= 400) {
+      this.bottomnavigation = true;
+    }
+  },
   data() {
     return {
+      bottomnavigation: false,
       drawer: null,
-      template :1,
+      template: 1,
       items: [
         // { title: "Home", icon: "mdi-view-dashboard" },
         // { title: "About", icon: "mdi-forum" },
-        { title: "Dashboard", icon: "mdi-view-dashboard" },
-        { title: "Account", icon: "mdi-account-box" },
-        { title: "Admin", icon: "mdi-gavel" },
+        { title: "Dashboard", icon: "mdi-view-dashboard", router: "Music" },
+        { title: "Account", icon: "mdi-account-box", router: "CardPage" },
+        { title: "Admin", icon: "mdi-gavel", router: "Calendar" },
+        { title: "Music", icon: "mdi-music-box", router: "Music" },
+        { title: "CardPage", icon: "mdi-credit-card-fast", router: "CardPage" },
+        {
+          title: "Calendar",
+          icon: "mdi-application-settings",
+          router: "Calendar",
+        },
       ],
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
     };

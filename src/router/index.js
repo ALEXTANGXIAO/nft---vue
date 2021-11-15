@@ -6,14 +6,15 @@ import Calendar from '../views/Calendar.vue'
 import CardPage from '../views/CardPage.vue'
 import ShopPage from '../views/ShopPage.vue'
 import AssetPage from '../views/AssetPage.vue'
-import LoginPage from '../views/LoginPage.vue'
+import LoginPage from '../views/Login.vue'
+import ResigterPage from '../views/ResigterPage.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
-        name: 'ShopPage',
-        component: ShopPage
+        name: 'LoginPage',
+        component: LoginPage
     },
     {
         path: '/about',
@@ -53,6 +54,11 @@ const routes = [{
         path: '/LoginPage',
         name: 'LoginPage',
         component: LoginPage
+    },
+    {
+        path: '/ResigterPage',
+        name: 'ResigterPage',
+        component: ResigterPage
     }
 ]
 
