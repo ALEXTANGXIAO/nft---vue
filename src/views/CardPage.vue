@@ -90,13 +90,11 @@ export default {
         src: "https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2021/01/23/ERH22cVB_o_1esmssoo79dg1b481nhrk1om11v.jpeg",
         flex: 6,
       },
-      ,
       {
         title: "Best airlines",
         src: "https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2021/11/15/o_1fkh1mbtsjkp1tmjkktckttnap.jpeg",
         flex: 6,
       },
-      ,
       {
         title: "Best airlines",
         src: "https://tcloud-1258327636.cos.ap-guangzhou.myqcloud.com/uploads/2021/11/15/o_1fkh1mbts1lso6ae6lvk9lbk9m.jpeg",
