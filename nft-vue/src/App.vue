@@ -116,7 +116,30 @@
 
     <!--v-footer -->
     <v-footer app>
+      <v-bottom-navigation
+        v-model="value"
+        :input-value="active"
+        color="indigo"
+        app
+      >
+        <v-btn>
+          <span>Recents</span>
 
+          <v-icon>mdi-history</v-icon>
+        </v-btn>
+
+        <v-btn>
+          <span>Favorites</span>
+
+          <v-icon>mdi-heart</v-icon>
+        </v-btn>
+
+        <v-btn>
+          <span>Nearby</span>
+
+          <v-icon>mdi-map-marker</v-icon>
+        </v-btn>
+      </v-bottom-navigation>
     </v-footer>
   </v-app>
 </template>
@@ -127,13 +150,14 @@ export default {
   created() {
     console.log("fuck u");
     console.log(this.$vuetify.breakpoint.width);
-    if (this.$vuetify.breakpoint.width >= 400) {
-      this.bottomnavigation = true;
+    if (this.$vuetify.breakpoint.width <= 400) {
+      this.active = true;
     }
   },
   data() {
     return {
-      bottomnavigation: false,
+      value: 1,
+      active: false,
       drawer: null,
       template: 1,
       items: [

@@ -2,6 +2,7 @@
   <v-card
     class="mx-auto"
     max-width="500"
+    hover
     center
   >
     <v-card-title class="text-h6 font-weight-regular justify-space-between">
@@ -145,15 +146,15 @@ export default {
       this.step++;
       switch (this.step) {
         case 3:
-          this.dialog = true;
+          // this.dialog = true;
           console.log(localStorage.getItem("token"));
 
           if (this.user.telephone.length != 11) {
             console.log("error");
           }
-          const api = "http://localhost:5000/api/auth/login";
+
           this.axios
-            .post(api, { ...this.user })
+            .post(this.$globalAPI.login, { ...this.user })
             .then((res) => {
               console.log(res);
               //保存token
@@ -161,11 +162,13 @@ export default {
               localStorage.setItem("token", res.data.data.token);
               //跳转到主页
               this.$router.replace({ name: "Home" });
+              alert(res.data.data.msg);
             })
             .catch((err) => {
               // console.log(res.data.msg);
-              console.log(err.response.data);
+              console.log(err);
               console.log(err.response.data.msg);
+              alert(err.response.data.msg);
             });
           console.log("login");
           return;
@@ -179,9 +182,8 @@ export default {
       if (this.user.telephone.length != 11) {
         console.log("error");
       }
-      const api = "http://localhost:5000/api/auth/login";
       this.axios
-        .post(api, { ...this.user })
+        .post(this.API.login, { ...this.user })
         .then((res) => {
           console.log(res);
           //保存token
@@ -191,10 +193,8 @@ export default {
           this.$router.replace({ name: "Home" });
         })
         .catch((err) => {
-          // console.log(res.data.msg);
           console.log(err);
         });
-      console.log("login");
     },
   },
 };

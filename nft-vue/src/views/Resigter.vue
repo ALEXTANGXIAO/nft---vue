@@ -151,9 +151,8 @@ export default {
             console.log("error");
           }
           console.log(this.user);
-          const api = "http://localhost:5000/api/auth/register";
           this.axios
-            .post(api, { ...this.user })
+            .post(this.$globalAPI.register, { ...this.user })
             .then((res) => {
               console.log(res);
               //保存token

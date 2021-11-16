@@ -5,7 +5,9 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import globalAPI from './config/globalAPI'
 
+Vue.prototype.$globalAPI = globalAPI
 Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 

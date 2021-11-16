@@ -4,7 +4,7 @@ datasource:
   driverName: mysql
   host: 47.106.96.238
   port: 3306
-  database: tgame
+  database: nft_test
   username: root
   password: txtx54TX!
   charset: utf8
