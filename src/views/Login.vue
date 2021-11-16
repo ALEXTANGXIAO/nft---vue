@@ -19,7 +19,7 @@
         <v-card-text>
           <v-text-field
             label="Email"
-            v-model="user.email"
+            v-model="user.telephone"
           ></v-text-field>
           <span class="text-caption grey--text text--darken-1">
             This is the email you will use to login to your Vuetify account
@@ -105,6 +105,7 @@
     </div>
 
     <v-overlay :value="dialog"></v-overlay>
+
   </v-card>
 </template>
 
@@ -163,7 +164,8 @@ export default {
             })
             .catch((err) => {
               // console.log(res.data.msg);
-              console.log(err);
+              console.log(err.response.data);
+              console.log(err.response.data.msg);
             });
           console.log("login");
           return;

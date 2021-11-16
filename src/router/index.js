@@ -7,7 +7,7 @@ import CardPage from '../views/CardPage.vue'
 import ShopPage from '../views/ShopPage.vue'
 import AssetPage from '../views/AssetPage.vue'
 import LoginPage from '../views/Login.vue'
-import ResigterPage from '../views/ResigterPage.vue'
+import ResigterPage from '../views/Resigter.vue'
 
 Vue.use(VueRouter)
 

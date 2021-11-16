@@ -2,6 +2,7 @@
   <v-card
     class="mx-auto"
     max-width="500"
+    center
   >
     <v-card-title class="text-h6 font-weight-regular justify-space-between">
       <span>{{ currentTitle }}</span>
@@ -18,7 +19,7 @@
         <v-card-text>
           <v-text-field
             label="Email"
-            v-model="user.email"
+            v-model="user.telephone"
           ></v-text-field>
           <span class="text-caption grey--text text--darken-1">
             This is the email you will use to login to your Vuetify account
@@ -74,17 +75,43 @@
         color="indigo"
         dark
         depressed
-        @click="step++"
+        @click="next"
       >
         Next
       </v-btn>
     </v-card-actions>
+
+    <div class="text-center">
+      <v-dialog
+        v-model="dialog"
+        hide-overlay
+        persistent
+        width="300"
+      >
+        <v-card
+          color="indigo"
+          dark
+        >
+          <v-card-text>
+            Please stand by
+            <v-progress-linear
+              indeterminate
+              color="white"
+              class="mb-0"
+            ></v-progress-linear>
+          </v-card-text>
+        </v-card>
+      </v-dialog>
+    </div>
+
+    <v-overlay :value="dialog"></v-overlay>
   </v-card>
 </template>
 
 <script>
 export default {
   data: () => ({
+    dialog: false,
     step: 1,
     user: {
       name: "",
@@ -93,7 +120,13 @@ export default {
     },
     comformPassword: "",
   }),
+  watch: {
+    dialog(val) {
+      if (!val) return;
 
+      setTimeout(() => (this.dialog = false), 4000);
+    },
+  },
   computed: {
     currentTitle() {
       switch (this.step) {
@@ -102,34 +135,43 @@ export default {
         case 2:
           return "Create a password";
         default:
-          login();
           return "Account created";
       }
     },
   },
   methods: {
-    login() {
-      console.log(localStorage.getItem("token"));
+    next() {
+      this.step++;
+      switch (this.step) {
+        case 3:
+          this.dialog = true;
+          console.log(localStorage.getItem("token"));
 
-      if (this.user.telephone.length != 11) {
-        console.log("error");
+          if (this.user.telephone.length != 11) {
+            console.log("error");
+          }
+          console.log(this.user);
+          const api = "http://localhost:5000/api/auth/register";
+          this.axios
+            .post(api, { ...this.user })
+            .then((res) => {
+              console.log(res);
+              //保存token
+              // storageService.set(storageService.USER_TOKEN,res.data.data.token)
+              localStorage.setItem("token", res.data.data.token);
+              //跳转到主页
+              this.$router.replace({ name: "Home" });
+            })
+            .catch((err) => {
+              // console.log(res.data.msg);
+              console.log(err.response.data);
+              console.log(err.response.data.msg);
+            });
+          console.log("login");
+          return;
+        default:
+          return;
       }
-      const api = "http://localhost:5000/api/auth/login";
-      this.axios
-        .post(api, { ...this.user })
-        .then((res) => {
-          console.log(res);
-          //保存token
-          // storageService.set(storageService.USER_TOKEN,res.data.data.token)
-          localStorage.setItem("token", res.data.data.token);
-          //跳转到主页
-          this.$router.replace({ name: "Home" });
-        })
-        .catch((err) => {
-          // console.log(res.data.msg);
-          console.log(err);
-        });
-      console.log("login");
     },
   },
 };
